@@ -46,7 +46,8 @@
 #		---------------------------
 #		1d. ETC.
 #		---------------------------
-		alias edit-bash="subl ~/.bash_profile"
+		alias edit-bash="subl ~/workspaces/wf/scripts/.bash_profile"
+		alias edit-bash-local="subl ~/.bash_profile"
 
 
 #   -------------------------------
