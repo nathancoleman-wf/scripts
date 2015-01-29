@@ -128,11 +128,12 @@
 		alias which-branch="git rev-parse --abbrev-ref HEAD"
 		
 		compare () {
-			github_url="http://www.github.com/"
+			github_url="https://www.github.com/"
 			username="nathancoleman-wf"
 			repo=$(which-repo)
 			branch=$(which-branch)
-			chrome $github_url/$username/$repo/compare/$username:$branch
+			base=${branch%/*}/Compare
+			chrome $github_url/$username/$repo/compare/$username:$base...$branch
 		}
 
 
