@@ -49,6 +49,8 @@
 		alias edit-bash="subl ~/workspaces/wf/scripts/.bash_profile"
 		alias edit-bash-local="subl ~/.bash_profile"
 
+		alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
 
 #   -------------------------------
 #   2. TERMINAL IMPROVEMENTS
