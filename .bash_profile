@@ -14,7 +14,8 @@
 #		3d. Builds
 #		3e. Local Server
 #		3f. Local Tests
-#		3g. Combinations (of other aliases)
+#		3g. Git
+#		3h. Combinations (of other aliases)
 #
 #  ---------------------------------------------------------------------------
 
@@ -121,7 +122,23 @@
 
 
 #		---------------------------
-#		3g. COMBINATIONS
+#		3g. GIT
+#		---------------------------
+		alias which-repo='basename $(git rev-parse --show-toplevel)'
+		alias which-branch="git rev-parse --abbrev-ref HEAD"
+		
+		compare () {
+			github_url="http://www.github.com/"
+			username="nathancoleman-wf"
+			repo=$(which-repo)
+			branch=$(which-branch)
+			chrome $github_url/$username/$repo/compare/$username:$branch
+		}
+
+
+
+#		---------------------------
+#		3h. COMBINATIONS
 #		---------------------------
 
 		alias sky-tower="workon sky && gittower ."
