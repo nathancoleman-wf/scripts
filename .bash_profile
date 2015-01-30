@@ -127,13 +127,35 @@
 		alias which-repo='basename $(git rev-parse --show-toplevel)'
 		alias which-branch="git rev-parse --abbrev-ref HEAD"
 		
-		compare () {
-			github_url="https://www.github.com/"
+		gh-compare () {
+			github_url="https://www.github.com"
 			username="nathancoleman-wf"
 			repo=$(which-repo)
 			branch=$(which-branch)
 			base=${branch%/*}/Compare
 			chrome $github_url/$username/$repo/compare/$username:$base...$branch
+		}
+
+		gh-repo () {
+			github_url="https://www.github.com"
+			username="nathancoleman-wf"
+			repo=$(which-repo)
+			chrome $github_url/$username/$repo
+		}
+
+		gh-branch () {
+			github_url="https://www.github.com"
+			username="nathancoleman-wf"
+			repo=$(which-repo)
+			branch=$(which-branch)
+			chrome $github_url/$username/$repo/tree/$branch
+		}
+
+		jira () {
+			jira_url="https://jira.webfilings.com/browse"
+			branch=$(which-branch)
+			ticket=${branch%/*}
+			chrome $jira_url/$ticket
 		}
 
 
