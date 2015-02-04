@@ -85,6 +85,53 @@
 		alias stack="workon stack && cd ~/workspaces/wf/python-runtime-stack"
 		alias cleansky="workon cleansky"
 
+		mksky () {
+			clean_sky=$HOME"/workspaces/wf/cleansky"
+			skies_dir=$HOME"/workspaces/wf/skies"
+			name=$1
+			new_dir=$skies_dir/$name
+
+			echo '\n\nMaking directory: '$new_dir
+			echo '================================================'
+			mkdir -p $new_dir
+
+			echo '\n\nSetting up git repo'
+			echo '================================================'
+			cd $clean_sky
+
+			git stash -u save --keep-index
+			git stash drop
+
+			git fetch Upstream
+			git pull Upstream master
+
+			cp -r . $new_dir/
+
+			cd $new_dir
+			
+			echo '\n\nCreating virtual environment: '$name
+			echo '================================================'
+			mkvirtualenv $name
+
+			echo '\n\nInstalling dependencies'
+			echo '================================================'
+			pip install -Ur requirements_dev.txt
+		}
+
+		rmsky () {
+			skies_dir=$HOME"/workspaces/wf/skies"
+			name=$1
+			rm_dir=$skies_dir/$name
+
+			cd $HOME &> /dev/null
+			echo 'Removing directory: '$rm_dir
+			rm -rf $rm_dir &> /dev/null
+			
+			echo 'Removing environment: '$name
+			deac &> /dev/null
+			rmvirtualenv $name &> /dev/null
+		}
+
 
 #		---------------------------
 #		3b. REQUIREMENTS
