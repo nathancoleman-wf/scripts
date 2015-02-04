@@ -92,11 +92,11 @@
 			new_dir=$skies_dir/$name
 
 			printf '\n\nMaking directory: '$new_dir
-			printf '================================================'
+			printf '\n================================================'
 			mkdir -p $new_dir
 
 			printf '\n\nSetting up git repo'
-			printf '================================================'
+			printf '\n================================================'
 			cd $clean_sky
 
 			git stash -u save --keep-index
@@ -109,11 +109,11 @@
 			cd $new_dir
 			
 			printf '\n\nCreating virtual environment: '$name
-			printf '================================================'
+			printf '\n================================================'
 			mkvirtualenv -a $(PWD) $name
 
 			printf '\n\nInstalling dependencies'
-			printf '================================================'
+			printf '\n================================================'
 			pip install -Ur requirements_dev.txt
 		}
 
