@@ -52,6 +52,10 @@
 
 		alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
+		alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
+		alias show-hidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+		alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
 
 #   -------------------------------
 #   2. TERMINAL IMPROVEMENTS
@@ -94,7 +98,8 @@
 #		3c. DATASTORE
 #		---------------------------
 
-		alias reset-data="python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments' --disabled_prefs='enable_home,show_tour' --global_password=test"
+		alias mk-datastore="mkdir -p datastore"
+		alias reset-data="mk-datastore && python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments' --disabled_prefs='enable_home,show_tour' --global_password=test"
 		alias r-d="reset-data"
 
 
@@ -112,6 +117,7 @@
 #		---------------------------
 
 		alias server="python manage.py runserver 0.0.0.0:8001"
+		alias s="server"
 
 
 #		---------------------------
@@ -167,6 +173,7 @@
 		alias dc-tower="workon dc && gittower ."
 		alias cleansky-tower="workon cleansky && gittower ."
 
+		alias doitall="req && full && reset-data && server"
 		alias full-server="full && server"
 		alias f-s="full-server"
 		alias lazy-server="lazy && server"
