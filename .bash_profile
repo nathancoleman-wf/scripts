@@ -110,7 +110,7 @@
 			
 			printf '\n\nCreating virtual environment: '$name
 			printf '================================================'
-			mkvirtualenv $name
+			mkvirtualenv -a $(PWD) $name
 
 			printf '\n\nInstalling dependencies'
 			printf '================================================'
