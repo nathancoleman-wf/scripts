@@ -91,30 +91,29 @@
 			name=$1
 			new_dir=$skies_dir/$name
 
-			echo '\n\nMaking directory: '$new_dir
-			echo '================================================'
+			printf '\n\nMaking directory: '$new_dir
+			printf '================================================'
 			mkdir -p $new_dir
 
-			echo '\n\nSetting up git repo'
-			echo '================================================'
+			printf '\n\nSetting up git repo'
+			printf '================================================'
 			cd $clean_sky
 
 			git stash -u save --keep-index
 			git stash drop
 
-			git fetch Upstream
 			git pull Upstream master
 
 			cp -r . $new_dir/
 
 			cd $new_dir
 			
-			echo '\n\nCreating virtual environment: '$name
-			echo '================================================'
+			printf '\n\nCreating virtual environment: '$name
+			printf '================================================'
 			mkvirtualenv $name
 
-			echo '\n\nInstalling dependencies'
-			echo '================================================'
+			printf '\n\nInstalling dependencies'
+			printf '================================================'
 			pip install -Ur requirements_dev.txt
 		}
 
