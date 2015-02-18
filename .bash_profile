@@ -160,6 +160,8 @@
 
 			alias req="pip install -Ur requirements.txt"
 			alias req-dev="pip install -Ur requirements_dev.txt"
+			alias edit-req="subl requirements.txt"
+			alias edit-req-dev="subl requirements_dev.txt"
 
 
 #		---------------------------
