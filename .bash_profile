@@ -38,7 +38,7 @@
 			export M2_HOME=/usr/local/Cellar/maven30/3.0.5/libexec
 			# export PATH=/usr/local/bin:$PATH
 
-			export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+			export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
 			export CLICOLOR=1
 			export LSCOLORS=ExFxBxDxCxegedabagacad
 
@@ -78,14 +78,14 @@
 #		2a. GENERAL
 #		---------------------------
 
-			alias c="clear"
-			alias d="cd ~/Desktop"
-			alias h="cd ~"
-			alias r="cd /"
+			alias c='clear'
+			alias d='cd ~/Desktop'
+			alias h='cd ~'
+			alias r='cd /'
 
-			alias 1up="cd ../"
-			alias 2up="cd ../../"
-			alias 3up="cd ../../../"
+			alias 1up='cd ../'
+			alias 2up='cd ../../'
+			alias 3up='cd ../../../'
 
 			alias whereami='PWD'
 
@@ -101,14 +101,14 @@
 #		2c. GIT
 #		---------------------------
 
-			alias gst="git status"
-			alias gcg="git config --global"
-			alias gcl="git config"
+			alias gst='git status'
+			alias gcg='git config --global'
+			alias gcl='git config'
 			alias gca='git commit -a -m'
-			alias gco="git checkout"
-			alias which-branch="git rev-parse --abbrev-ref HEAD"
+			alias gco='git checkout'
+			alias which-branch='git rev-parse --abbrev-ref HEAD'
 			alias which-repo='basename $(git rev-parse --show-toplevel)'
-			alias git-info="echo `which-repo` : `which-branch`"
+			alias git-info='echo $(which-repo) : $(which-branch)'
 
 
 #   -------------------------------
@@ -120,11 +120,12 @@
 #		---------------------------
 
 			alias mkvirtualenv='mkvirtualenv -a $(PWD)'
-			alias deac="deactivate"
-			alias sky="workon sky"
-			alias dc="workon dc"
-			alias stack="workon stack"
-			alias cleansky="workon cleansky"
+			alias deac='deactivate'
+			alias sky='workon sky'
+			alias dc='workon dc'
+			alias stack='workon stack'
+			alias cleansky='workon cleansky'
+			alias scripts='workon scripts'
 
 			mksky () {
 				clean_sky=$HOME"/workspaces/wf/cleansky"
@@ -177,17 +178,17 @@
 #		3b. REQUIREMENTS
 #		---------------------------
 
-			alias req="pip install -Ur requirements.txt"
-			alias req-dev="pip install -Ur requirements_dev.txt"
-			alias edit-req="subl requirements.txt"
-			alias edit-req-dev="subl requirements_dev.txt"
+			alias req='pip install -Ur requirements.txt'
+			alias req-dev='pip install -Ur requirements_dev.txt'
+			alias edit-req='subl requirements.txt'
+			alias edit-req-dev='subl requirements_dev.txt'
 
 
 #		---------------------------
 #		3c. DATASTORE
 #		---------------------------
 
-			alias mk-datastore="mkdir -p datastore"
+			alias mk-datastore='mkdir -p datastore'
 			alias reset-data="mk-datastore && python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments' --disabled_prefs='enable_home,show_tour' --global_password=test"
 
 
@@ -195,23 +196,23 @@
 #		3d. BUILDS
 #		---------------------------
 
-			alias full="tools/build/build_full.sh"
-			alias lazy="tools/build/build_lazy.sh"
-			alias lazy-gen="tools/build/build_lazy-with-gen.sh"
+			alias full='tools/build/build_full.sh'
+			alias lazy='tools/build/build_lazy.sh'
+			alias lazy-gen='tools/build/build_lazy-with-gen.sh'
 
 
 #		---------------------------
 #		3e. LOCAL SERVER
 #		---------------------------
 
-			alias server="python manage.py runserver 0.0.0.0:8001"
+			alias server='python manage.py runserver 0.0.0.0:8001'
 
 
 #		---------------------------
 #		3f. LOCAL TESTS
 #		---------------------------
 
-			alias test="python manage.py test"
+			alias test='python manage.py test'
 
 
 #		---------------------------
@@ -254,28 +255,28 @@
 #		3h. COMBINATIONS
 #		---------------------------
 
-			alias sky-tower="workon sky && gittower ."
-			alias dc-tower="workon dc && gittower ."
-			alias cleansky-tower="workon cleansky && gittower ."
+			alias sky-tower='workon sky && gittower .'
+			alias dc-tower='workon dc && gittower .'
+			alias cleansky-tower='workon cleansky && gittower .'
 
-			alias doitall="req && full && reset-data && server"
-			alias full-server="full && server"
-			alias lazy-server="lazy && server"
-			alias req-full="req && full"
-			alias req-full-server="req && full && server"
-			alias req-lazy="req && lazy"
-			alias req-lazy-server="req && lazy && server"
+			alias doitall='req && full && reset-data && server'
+			alias full-server='full && server'
+			alias lazy-server='lazy && server'
+			alias req-full='req && full'
+			alias req-full-server='req && full && server'
+			alias req-lazy='req && lazy'
+			alias req-lazy-server='req && lazy && server'
 
 
 #	-------------------------------
 #	4. ALIAS FOR AN ALIAS
 #	-------------------------------
 
-		alias f-s="full-server"
-		alias gi="git-info"
-		alias l-s="lazy-server"
-		alias r-d="reset-data"
-		alias s="server"
-		alias wb="which-branch"
-		alias wr="which-repo"
+		alias f-s='full-server'
+		alias gi='git-info'
+		alias l-s='lazy-server'
+		alias r-d='reset-data'
+		alias s='server'
+		alias wb='which-branch'
+		alias wr='which-repo'
 
