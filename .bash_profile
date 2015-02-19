@@ -8,7 +8,8 @@
 #		1d. Etc.
 #  2.   Terminal Improvements
 #		2a. General
-#		2b. Git
+#		2b. Overrides
+#		2c. Git
 #  3.	Workiva Dev
 #		3a. Virtual Environments
 #		3b. Requirements
@@ -18,6 +19,7 @@
 #		3f. Local Tests
 #		3g. Git
 #		3h. Combinations (of other aliases)
+#	4. Alias for an Alias
 #
 #  ---------------------------------------------------------------------------
 
@@ -35,6 +37,11 @@
 			export MAVEN_OPTS="-Xmx4096m -Xss1024m -XX:MaxPermSize=128m"
 			export M2_HOME=/usr/local/Cellar/maven30/3.0.5/libexec
 			# export PATH=/usr/local/bin:$PATH
+
+			export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+			export CLICOLOR=1
+			export LSCOLORS=ExFxBxDxCxegedabagacad
+
 
 #		---------------------------
 #		1b. EDITOR
@@ -80,17 +87,28 @@
 			alias 2up="cd ../../"
 			alias 3up="cd ../../../"
 
+			alias whereami='PWD'
 
 #		---------------------------
-#		2b. GIT
+#		2b. OVERRIDES
+#		---------------------------
+
+			alias ls="ls -GFh"
+			alias mkdir="mkdir -p"
+
+
+#		---------------------------
+#		2c. GIT
 #		---------------------------
 
 			alias gst="git status"
 			alias gcg="git config --global"
 			alias gcl="git config"
+			alias gca='git commit -a -m'
 			alias gco="git checkout"
 			alias which-branch="git rev-parse --abbrev-ref HEAD"
 			alias which-repo='basename $(git rev-parse --show-toplevel)'
+			alias git-info="echo `which-repo` : `which-branch`"
 
 
 #   -------------------------------
@@ -101,10 +119,11 @@
 #		3a. VIRTUAL ENVIRONMENTS
 #		---------------------------
 
+			alias mkvirtualenv='mkvirtualenv -a $(PWD)'
 			alias deac="deactivate"
-			alias sky="workon sky && cd ~/workspaces/wf/bigsky"
-			alias dc="workon dc && cd ~/workspaces/wf/datacollections"
-			alias stack="workon stack && cd ~/workspaces/wf/python-runtime-stack"
+			alias sky="workon sky"
+			alias dc="workon dc"
+			alias stack="workon stack"
 			alias cleansky="workon cleansky"
 
 			mksky () {
@@ -170,7 +189,6 @@
 
 			alias mk-datastore="mkdir -p datastore"
 			alias reset-data="mk-datastore && python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments' --disabled_prefs='enable_home,show_tour' --global_password=test"
-			alias r-d="reset-data"
 
 
 #		---------------------------
@@ -187,7 +205,6 @@
 #		---------------------------
 
 			alias server="python manage.py runserver 0.0.0.0:8001"
-			alias s="server"
 
 
 #		---------------------------
@@ -243,12 +260,22 @@
 
 			alias doitall="req && full && reset-data && server"
 			alias full-server="full && server"
-			alias f-s="full-server"
 			alias lazy-server="lazy && server"
-			alias l-s="lazy-server"
-
 			alias req-full="req && full"
 			alias req-full-server="req && full && server"
 			alias req-lazy="req && lazy"
 			alias req-lazy-server="req && lazy && server"
+
+
+#	-------------------------------
+#	4. ALIAS FOR AN ALIAS
+#	-------------------------------
+
+		alias f-s="full-server"
+		alias gi="git-info"
+		alias l-s="lazy-server"
+		alias r-d="reset-data"
+		alias s="server"
+		alias wb="which-branch"
+		alias wr="which-repo"
 
