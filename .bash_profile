@@ -1,24 +1,29 @@
 #  ---------------------------------------------------------------------------
 #
 #  Sections:
+#
 #  1.   Environment Configuration
 #		1a. Variables
 #		1b. Editor
 #		1c. Git Client
 #		1d. Etc.
+#
 #  2.   Terminal Improvements
 #		2a. General
 #		2b. Overrides
 #		2c. Git
+#
 #  3.	Workiva Dev
 #		3a. Virtual Environments
 #		3b. Requirements
 #		3c. Datastore
 #		3d. Builds
-#		3e. Local Server
-#		3f. Local Tests
-#		3g. Git
-#		3h. Combinations (of other aliases)
+#		3e. Deploy
+#		3f. Local Server
+#		3g. Local Tests
+#		3h. Git
+#		3i. Combinations (of other aliases)
+#
 #	4. Alias for an Alias
 #
 #  ---------------------------------------------------------------------------
@@ -202,21 +207,29 @@
 
 
 #		---------------------------
-#		3e. LOCAL SERVER
+#		3e. DEPLOY
+#		---------------------------
+
+		alias deploy='tools/build/deploy.sh'
+		alias deploy-release='tools/build/deploy_release.sh'
+
+
+#		---------------------------
+#		3f. LOCAL SERVER
 #		---------------------------
 
 			alias server='python manage.py runserver 0.0.0.0:8001'
 
 
 #		---------------------------
-#		3f. LOCAL TESTS
+#		3g. LOCAL TESTS
 #		---------------------------
 
 			alias test='python manage.py test'
 
 
 #		---------------------------
-#		3g. GIT
+#		3h. GIT
 #		---------------------------
 			
 			gh-compare () {
@@ -252,7 +265,7 @@
 
 
 #		---------------------------
-#		3h. COMBINATIONS
+#		3i. COMBINATIONS
 #		---------------------------
 
 			alias sky-tower='workon sky && gittower .'
