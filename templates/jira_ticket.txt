@@ -1,0 +1,33 @@
+*SOLUTION*
+_Describe what was done._
+
+*UNIT TESTS*
+_What unit tests were made? If no unit tests were made, why not?_
+
+*TESTING AND AREAS IMPACTED*
+_What recommendations are there for QA testing?_
+
+_What components of the application are affected?_
+
+_What did the dev do to test these changes?_
+
+*CODE REVIEW PULL REQUEST*
+_Link_
+
+*CI BUILD*
+_Link_
+
+*TESTING APPSPOT*
+_Link_
+
+*AUTOMATION COMPONENTS*
+All DC Components (others may be necessary depending on job)
+
+*KITTYHAWK RUN*
+_Link_
+
+*MANUAL TESTING*
+_What was done by QA for testing?_
+
+*MASTER PULL REQUEST*
+_Link_

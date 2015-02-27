@@ -47,6 +47,8 @@
 			export CLICOLOR=1
 			export LSCOLORS=ExFxBxDxCxegedabagacad
 
+			export SCRIPTS_DIR='/Users/nathancoleman/workspaces/wf/scripts/'
+
 
 #		---------------------------
 #		1b. EDITOR
@@ -135,15 +137,16 @@
 			mksky () {
 				clean_sky=$HOME"/workspaces/wf/cleansky"
 				skies_dir=$HOME"/workspaces/wf/skies"
+				dc_dir=$HOME"/workspaces/wf/datacollections/wf/apps/dc"
 				name=$1
 				new_dir=$skies_dir/$name
 
 				printf '\n\nMaking directory: '$new_dir
-				printf '\n================================================'
+				printf '\n================================================\n'
 				mkdir -p $new_dir
 
 				printf '\n\nSetting up git repo'
-				printf '\n================================================'
+				printf '\n================================================\n'
 				cd $clean_sky
 
 				git stash -u save --keep-index
@@ -156,12 +159,27 @@
 				cd $new_dir
 				
 				printf '\n\nCreating virtual environment: '$name
-				printf '\n================================================'
+				printf '\n================================================\n'
 				mkvirtualenv -a $(PWD) $name
 
 				printf '\n\nInstalling dependencies'
-				printf '\n================================================'
+				printf '\n================================================\n'
 				pip install -Ur requirements_dev.txt
+
+				printf '\n\nSymlinking to datacollections repo'
+				printf '\n================================================\n'
+				cdsitepackages
+				cd wf/apps/
+				mv dc dc_pip
+				ln -s $dc_dir dc
+				workon $name
+
+				printf '\n\nInitiating full build'
+				printf '\n================================================\n'
+				full
+
+				printf '\n\n COMPLETE\n'
+				tower
 			}
 
 			rmsky () {
@@ -237,7 +255,7 @@
 				username="nathancoleman-wf"
 				repo=$(which-repo)
 				branch=$(which-branch)
-				base=${branch%/*}/Compare
+				base=${branch%/*}/master
 				chrome $github_url/$username/$repo/compare/$username:$base...$branch
 			}
 
@@ -256,6 +274,16 @@
 				chrome $github_url/$username/$repo/tree/$branch
 			}
 
+			gh-template () {
+				template_dir=$SCRIPTS_DIR'templates/'
+				template=$template_dir'pull_request.txt'
+				cat $template | pbcopy
+			}
+
+#		---------------------------
+#		3i. JIRA
+#		---------------------------
+
 			jira () {
 				jira_url="https://jira.webfilings.com/browse"
 				branch=$(which-branch)
@@ -263,9 +291,15 @@
 				chrome $jira_url/$ticket
 			}
 
+			jira-template () {
+				template_dir=$SCRIPTS_DIR'templates/'
+				template=$template_dir'jira_ticket.txt'
+				cat $template | pbcopy
+			}
+
 
 #		---------------------------
-#		3i. COMBINATIONS
+#		3j. COMBINATIONS
 #		---------------------------
 
 			alias sky-tower='workon sky && gittower .'
