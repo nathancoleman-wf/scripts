@@ -22,7 +22,8 @@
 #		3f. Local Server
 #		3g. Local Tests
 #		3h. Git
-#		3i. Combinations (of other aliases)
+#		3i. JIRA
+#		3j. Combinations (of other aliases)
 #
 #	4. Alias for an Alias
 #
