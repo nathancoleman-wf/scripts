@@ -260,7 +260,7 @@
 				username="nathancoleman-wf"
 				repo=$(which-repo)
 				branch=$(which-branch)
-				base=${branch%/*}/master
+				base=${branch%/*}/Compare
 				chrome $github_url/$username/$repo/compare/$username:$base...$branch
 			}
 
