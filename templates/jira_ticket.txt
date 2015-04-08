@@ -15,19 +15,10 @@ _What did the dev do to test these changes?_
 _Link_
 
 *CI BUILD*
-_Link_
+See pull request
 
 *TESTING APPSPOT*
 _Link_
 
 *AUTOMATION COMPONENTS*
 All DC Components (others may be necessary depending on job)
-
-*KITTYHAWK RUN*
-_Link_
-
-*MANUAL TESTING*
-_What was done by QA for testing?_
-
-*MASTER PULL REQUEST*
-_Link_

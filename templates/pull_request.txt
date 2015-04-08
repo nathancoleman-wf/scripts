@@ -1,7 +1,6 @@
 JIRA: link
 
 AppSpot: link
-* Tag me if you do not have access to this AppSpot
 
 ### Notes ###
 text
