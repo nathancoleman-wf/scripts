@@ -71,8 +71,6 @@
 			alias edit-bash-local="subl ~/.bash_profile"
 			alias edit-zsh="subl ~/.zshrc"
 
-			alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-
 			alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
 			alias show-hidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 			alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -207,8 +205,8 @@
 #		3b. REQUIREMENTS
 #		---------------------------
 
-			alias req='pip install -Ur requirements.txt'
-			alias req-dev='pip install -Ur requirements_dev.txt'
+			alias req='rm -rf "/Users/nathancoleman/.virtualenvs/sky/build/*" && pip install -Ur requirements.txt'
+			alias req-dev='rm -rf "/Users/nathancoleman/.virtualenvs/sky/build/*" && pip install -Ur requirements_dev.txt'
 			alias edit-req='subl requirements.txt'
 			alias edit-req-dev='subl requirements_dev.txt'
 
@@ -262,14 +260,14 @@
 				repo=$(which-repo)
 				branch=$(which-branch)
 				base=${branch%/*}/Compare
-				chrome $github_url/$username/$repo/compare/$username:$base...$branch
+				open $github_url/$username/$repo/compare/$username:$base...$branch
 			}
 
 			gh-repo () {
 				github_url="https://www.github.com"
 				username="nathancoleman-wf"
 				repo=$(which-repo)
-				chrome $github_url/$username/$repo
+				open $github_url/$username/$repo
 			}
 
 			gh-branch () {
@@ -277,7 +275,7 @@
 				username="nathancoleman-wf"
 				repo=$(which-repo)
 				branch=$(which-branch)
-				chrome $github_url/$username/$repo/tree/$branch
+				open $github_url/$username/$repo/tree/$branch
 			}
 
 			gh-template () {
@@ -294,7 +292,7 @@
 				jira_url="https://jira.webfilings.com/browse"
 				branch=$(which-branch)
 				ticket=${branch%/*}
-				chrome $jira_url/$ticket
+				open $jira_url/$ticket
 			}
 
 			jira-template () {
