@@ -1,9 +1,9 @@
-JIRA: link
+JIRA: [****](https://jira.atl.workiva.net/browse/****)
 
-AppSpot: link
+AppSpot: [____-dot-wf-nate](https://____-dot-wf-nate.appspot.com)
 
 ### Notes ###
-text
+- 
 
 ### Please  Review ###
 @michelmcdonald-wf @christianplazas-wf @joshbeam-wf @johnpillar-wf @brianbolton-wf 

@@ -281,7 +281,14 @@
 			gh-template () {
 				template_dir=$SCRIPTS_DIR'templates/'
 				template=$template_dir'pull_request.txt'
+				branch=$(which-branch)
+				ticket=${branch%/*}
+				lower_ticket=$(echo $ticket | tr '[:upper:]' '[:lower:]')
+				sed -i "" 's/\*\*\*\*/'$ticket'/g' $template
+				sed -i "" 's/____/'$lower_ticket'/g' $template
 				cat $template | pbcopy
+				sed -i "" 's/'$ticket'/\*\*\*\*/g' $template
+				sed -i "" 's/'$lower_ticket'/____/g' $template
 			}
 
 #		---------------------------
