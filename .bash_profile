@@ -48,6 +48,7 @@
 			export CLICOLOR=1
 			export LSCOLORS=ExFxBxDxCxegedabagacad
 
+			export DATASTORES_DIR='/Users/nathancoleman/workspaces/wf/datastores/'
 			export SCRIPTS_DIR='/Users/nathancoleman/workspaces/wf/scripts/'
 
 
@@ -111,6 +112,11 @@
 #		---------------------------
 #		2c. GIT
 #		---------------------------
+
+#			Git Completion
+			if [ -f $SCRIPTS_DIR'.git-completion.bash' ]; then
+				. $SCRIPTS_DIR'.git-completion.bash'
+			fi
 
 			alias gst='git status'
 			alias gcg='git config --global'
