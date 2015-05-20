@@ -1,0 +1,21 @@
+#!/Users/nathancoleman/.virtualenvs/sky/bin/python
+
+import subprocess
+
+
+def get_current_branch():
+	branch_name = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).strip()
+	return branch_name
+
+
+def run_hook():
+	branch = get_current_branch()
+
+	if branch == 'master':
+		print 'Pushing to Upstream master'
+		output = subprocess.check_output(['git', 'push', 'origin', 'master'])
+
+
+if __name__ == '__main__':
+	print 'Running post-merge script'
+	run_hook()
