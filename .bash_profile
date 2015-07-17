@@ -39,10 +39,9 @@
 			
 			export WORKON_HOME=$HOME/.virtualenvs
 			source /usr/local/bin/virtualenvwrapper.sh
-			export ANT_OPTS="-Xms512m -Xmx1024m"
-			export MAVEN_OPTS="-Xmx4096m -Xss1024m -XX:MaxPermSize=128m"
+			export MAVEN_OPTS="-Xmx4096m -Xss1024m -XX:MaxPermSize=1024m"
+			export ANT_OPTS="-Xms512m -Xmx4096m"
 			export M2_HOME=/usr/local/Cellar/maven30/3.0.5/libexec
-			# export PATH=/usr/local/bin:$PATH
 
 			export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
 			export CLICOLOR=1
@@ -140,6 +139,7 @@
 			alias deac='deactivate'
 			alias sky='workon sky'
 			alias dc='workon dc'
+			alias elements='workon elements'
 			alias stack='workon stack'
 			alias cleansky='workon cleansky'
 			alias scripts='workon scripts'
@@ -222,7 +222,7 @@
 #		---------------------------
 
 			alias mk-datastore='mkdir -p datastore'
-			alias reset-data="mk-datastore && python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments' --disabled_prefs='enable_home,show_tour' --global_password=test"
+			alias reset-data="python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments'  --global_password=test"
 
 
 #		---------------------------

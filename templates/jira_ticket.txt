@@ -1,3 +1,4 @@
+{panel}
 *SOLUTION*
 _Describe what was done._
 
@@ -22,3 +23,4 @@ _Link_
 
 *AUTOMATION COMPONENTS*
 All DC Components (others may be necessary depending on job)
+{panel}
