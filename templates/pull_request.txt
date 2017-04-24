@@ -1,9 +1,6 @@
 JIRA: [****](https://jira.atl.workiva.net/browse/****)
-
-AppSpot: [____-dot-wf-nate](https://____-dot-wf-nate.appspot.com)
+Please Review: @ericolson-wf @nickdilabio-wf
+FYI: @nickcerilli-wf
 
 ### Notes ###
-- 
-
-### Please  Review ###
-@christianplazas-wf @joshbeam-wf @johnpillar-wf @brianbolton-wf @michelmcdonald-wf
+-

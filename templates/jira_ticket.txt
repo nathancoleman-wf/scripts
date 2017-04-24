@@ -1,26 +1,7 @@
-{panel}
-*SOLUTION*
-_Describe what was done._
-
-*UNIT TESTS*
-_What unit tests were made? If no unit tests were made, why not?_
-
-*TESTING AND AREAS IMPACTED*
-_What recommendations are there for QA testing?_
-
-_What components of the application are affected?_
-
-_What did the dev do to test these changes?_
-
-*CODE REVIEW PULL REQUEST*
-_Link_
-
-*CI BUILD*
-See pull request
-
-*TESTING APPSPOT*
-_Link_
-
-*AUTOMATION COMPONENTS*
-All DC Components (others may be necessary depending on job)
-{panel}
+|||
+| Solution |  |
+| Unit Tests |  |
+| Testing Recommendations |  |
+| Code Review PR |  |
+| CI Build | See code review PR |
+| Automation Components | All DC Components (others may be necessary depending on job) |

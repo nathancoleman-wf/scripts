@@ -35,12 +35,12 @@
 
 #		---------------------------
 #		1a. VARIABLES
-#		---------------------------	
-			
+#		---------------------------
+
 			export WORKON_HOME=$HOME/.virtualenvs
 			source /usr/local/bin/virtualenvwrapper.sh
 			export MAVEN_OPTS="-Xmx4096m -Xss1024m -XX:MaxPermSize=1024m"
-			export ANT_OPTS="-Xms512m -Xmx4096m"
+			export ANT_OPTS="-Xms512m -Xmx2056m"
 			export M2_HOME=/usr/local/Cellar/maven30/3.0.5/libexec
 
 			export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
@@ -50,6 +50,11 @@
 			export DATASTORES_DIR='/Users/nathancoleman/workspaces/wf/datastores/'
 			export SCRIPTS_DIR='/Users/nathancoleman/workspaces/wf/scripts/'
 
+			export GOPATH=$HOME/go
+			export GOBIN=$GOPATH/bin
+			export PATH=$PATH:$GOBIN
+
+			export PYTHONPATH="$PYTHONPATH:/usr/local/google_appengine"
 
 #		---------------------------
 #		1b. EDITOR
@@ -59,21 +64,22 @@
 
 #		---------------------------
 #		1c. GIT CLIENT
-#		---------------------------		
-			
+#		---------------------------
+
 			alias tower="gittower ."
 
 #		---------------------------
 #		1d. ETC.
 #		---------------------------
-			
-			alias edit-bash="subl ~/workspaces/wf/scripts/.bash_profile"
-			alias edit-bash-local="subl ~/.bash_profile"
-			alias edit-zsh="subl ~/.zshrc"
+
+			alias edit-bash="atom ~/workspaces/wf/scripts/.bash_profile"
+			alias edit-bash-local="atom ~/.bash_profile"
+			alias edit-zsh="atom ~/.zshrc"
 
 			alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
 			alias show-hidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 			alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+			alias poem='say "here is a poem for you all." && say "gary is a scary mother fucker" && say "super hairy mother fucker" && say "fucking larry mother fucker" && say "dont you know?"'
 
 
 #   -------------------------------
@@ -87,7 +93,11 @@
 			alias c='clear'
 			alias d='cd ~/Desktop'
 			alias h='cd ~'
+			alias ls='ls -1'
 			alias r='cd /'
+			alias w='cd ~/workspaces'
+			alias ww='w && cd wf'
+			alias wn='w && cd nathancoleman'
 
 			alias 1up='cd ../'
 			alias 2up='cd ../../'
@@ -167,7 +177,7 @@
 				cp -r . $new_dir/
 
 				cd $new_dir
-				
+
 				printf '\n\nCreating virtual environment: '$name
 				printf '\n================================================\n'
 				mkvirtualenv -a $(PWD) $name
@@ -200,7 +210,7 @@
 				cd $HOME &> /dev/null
 				echo 'Removing directory: '$rm_dir
 				rm -rf $rm_dir &> /dev/null
-				
+
 				echo 'Removing environment: '$name
 				deac &> /dev/null
 				rmvirtualenv $name &> /dev/null
@@ -211,10 +221,10 @@
 #		3b. REQUIREMENTS
 #		---------------------------
 
-			alias req='rm -rf "/Users/nathancoleman/.virtualenvs/sky/build/*" && pip install -Ur requirements.txt'
-			alias req-dev='rm -rf "/Users/nathancoleman/.virtualenvs/sky/build/*" && pip install -Ur requirements_dev.txt'
-			alias edit-req='subl requirements.txt'
-			alias edit-req-dev='subl requirements_dev.txt'
+			alias req='rm -rf /Users/nathancoleman/.virtualenvs/sky/build/* && pip install -r requirements.txt'
+			alias req-dev='rm -rf /Users/nathancoleman/.virtualenvs/sky/build/* && pip install -r requirements_dev.txt'
+			alias edit-req='atom requirements.txt'
+			alias edit-req-dev='atom requirements_dev.txt'
 
 
 #		---------------------------
@@ -223,6 +233,7 @@
 
 			alias mk-datastore='mkdir -p datastore'
 			alias reset-data="python tools/erase_reset_data.py --admin=nathan.coleman@workiva.com --password=test --enabled_settings='enable_data_collection,enable_attachments'  --global_password=test"
+			alias replace-data="rm -rf /tmp/django_dev~big-sky.datastore && cp /tmp/django_dev~big-sky.datastore_copy /tmp/django_dev~big-sky.datastore && rm -rf /tmp/django_dev~big-sky.search_indexes && cp /tmp/django_dev~big-sky.search_indexes_copy /tmp/django_dev~big-sky.search_indexes"
 
 
 #		---------------------------
@@ -246,7 +257,7 @@
 #		3f. LOCAL SERVER
 #		---------------------------
 
-			alias server='python manage.py runserver 0.0.0.0:8001'
+			alias server='python manage.py runserver 0.0.0.0:8001 --log_level debug'
 
 
 #		---------------------------
@@ -259,7 +270,7 @@
 #		---------------------------
 #		3h. GIT
 #		---------------------------
-			
+
 			gh-compare () {
 				github_url="https://www.github.com"
 				username="nathancoleman-wf"
@@ -287,6 +298,18 @@
 			gh-template () {
 				template_dir=$SCRIPTS_DIR'templates/'
 				template=$template_dir'pull_request.txt'
+				branch=$(which-branch)
+				ticket=$branch
+				lower_ticket=$(echo $ticket | tr '[:upper:]' '[:lower:]')
+				sed -i "" 's/\*\*\*\*/'$ticket'/g' $template
+				cat $template | pbcopy
+				sed -i "" 's/'$ticket'/\*\*\*\*/g' $template
+				sed -i "" 's/'$lower_ticket'/____/g' $template
+			}
+
+			mpr-template () {
+				template_dir=$SCRIPTS_DIR'templates/'
+				template=$template_dir'master_pull_request.txt'
 				branch=$(which-branch)
 				ticket=${branch%/*}
 				lower_ticket=$(echo $ticket | tr '[:upper:]' '[:lower:]')
@@ -343,4 +366,3 @@
 		alias s='server'
 		alias wb='which-branch'
 		alias wr='which-repo'
-
